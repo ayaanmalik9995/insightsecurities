@@ -1,0 +1,7 @@
+node_modules
+dist
+qa
+.playwright-mcp
+research
+.impeccable
+.claude

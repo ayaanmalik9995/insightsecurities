@@ -8,3 +8,6 @@ qa/
 .DS_Store
 ~$*.xlsx
 .vercel
+
+.vercel
+.env*
