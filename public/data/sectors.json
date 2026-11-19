@@ -1,0 +1,57 @@
+{
+ "generatedAt": "2026-11-19T16:06:49.885Z",
+ "defaultSector": "pharma",
+ "sectors": [
+  {
+   "slug": "pharma",
+   "name": "Pharmaceuticals",
+   "shortName": "Pharma",
+   "status": "live",
+   "description": "PSX-listed pharmaceutical manufacturers: multinationals and local players, June and December fiscal years.",
+   "asOf": {
+    "financials": "2026-09-30",
+    "financialsPeriod": "2026Q3",
+    "balanceSheet": "2026-06-30",
+    "balanceSheetPeriod": "2026Q2",
+    "prices": "2026-11-10"
+   },
+   "companies": 13
+  },
+  {
+   "slug": "banks",
+   "name": "Commercial Banks",
+   "shortName": "Banks",
+   "status": "coming_soon",
+   "description": "Deposits, advances, spreads and returns for PSX-listed banks."
+  },
+  {
+   "slug": "cement",
+   "name": "Cement",
+   "shortName": "Cement",
+   "status": "coming_soon",
+   "description": "Dispatches, margins and leverage for PSX-listed cement makers."
+  },
+  {
+   "slug": "fertiliser",
+   "name": "Fertiliser",
+   "shortName": "Fertiliser",
+   "status": "coming_soon",
+   "description": "Urea and DAP producers on the PSX."
+  },
+  {
+   "slug": "stress",
+   "name": "Worst-case test sector",
+   "shortName": "Stress test",
+   "status": "dev",
+   "description": "Development-only stress test: extreme but plausible values. Never shown in production.",
+   "asOf": {
+    "financials": "2026-09-30",
+    "financialsPeriod": "2026Q3",
+    "balanceSheet": "2026-06-30",
+    "balanceSheetPeriod": "2026Q2",
+    "prices": "2026-11-10"
+   },
+   "companies": 14
+  }
+ ]
+}

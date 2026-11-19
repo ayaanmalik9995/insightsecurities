@@ -1,0 +1,10 @@
+node_modules
+dist
+public/data/*.staging
+public/data/*.old
+.playwright-mcp
+qa/
+*.local
+.DS_Store
+~$*.xlsx
+.vercel

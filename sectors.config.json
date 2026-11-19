@@ -1,0 +1,513 @@
+{
+  "$comment": "One entry per sector. To add a sector: put its workbook in data-src/<slug>/, add an entry here with status \"live\", run `npm run data`. Metric ids are the workbook column headers in snake_case (e.g. 'PE TTM' -> pe_ttm). Aggregates/KPIs/league tables reference those ids.",
+  "defaultSector": "pharma",
+  "sectors": [
+    {
+      "slug": "pharma",
+      "name": "Pharmaceuticals",
+      "shortName": "Pharma",
+      "status": "live",
+      "workbook": "data-src/pharma",
+      "description": "PSX-listed pharmaceutical manufacturers: multinationals and local players, June and December fiscal years.",
+      "template": "psx-standard",
+      "aggregates": [
+        {
+          "id": "revenue_ttm",
+          "label": "Combined revenue",
+          "unit": "pkr_mn",
+          "type": "sum",
+          "metric": "ttm_net_sales"
+        },
+        {
+          "id": "profit_ttm",
+          "label": "Combined net profit",
+          "unit": "pkr_mn",
+          "type": "sum",
+          "metric": "ttm_net_profit"
+        },
+        {
+          "id": "revenue_q",
+          "label": "Sector revenue (quarter)",
+          "unit": "pkr_mn",
+          "type": "sum",
+          "metric": "net_sales"
+        },
+        {
+          "id": "profit_q",
+          "label": "Sector net profit (quarter)",
+          "unit": "pkr_mn",
+          "type": "sum",
+          "metric": "net_profit"
+        },
+        {
+          "id": "revenue_growth_ttm",
+          "label": "Revenue growth (TTM)",
+          "unit": "pct",
+          "type": "ratio_of_sums",
+          "num": "ttm_net_sales",
+          "den": "prior_ttm_net_sales",
+          "minusOne": true
+        },
+        {
+          "id": "profit_growth_ttm",
+          "label": "Profit growth (TTM)",
+          "unit": "pct",
+          "type": "ratio_of_sums",
+          "num": "ttm_net_profit",
+          "den": "prior_ttm_net_profit",
+          "minusOne": true
+        },
+        {
+          "id": "gross_margin_ttm",
+          "label": "Gross margin (TTM)",
+          "unit": "pct",
+          "type": "ratio_of_sums",
+          "num": "gross_profit",
+          "den": "net_sales",
+          "ttm": true
+        },
+        {
+          "id": "operating_margin_ttm",
+          "label": "Operating margin (TTM)",
+          "unit": "pct",
+          "type": "ratio_of_sums",
+          "num": "operating_profit",
+          "den": "net_sales",
+          "ttm": true
+        },
+        {
+          "id": "net_margin_ttm",
+          "label": "Net margin (TTM)",
+          "unit": "pct",
+          "type": "ratio_of_sums",
+          "num": "net_profit",
+          "den": "net_sales",
+          "ttm": true
+        },
+        {
+          "id": "roe_ttm",
+          "label": "Sector ROE (TTM)",
+          "unit": "pct",
+          "type": "ratio_of_sums",
+          "num": "ttm_net_profit",
+          "den": "total_equity",
+          "denAverageLag": 4
+        },
+        {
+          "id": "pe_median",
+          "label": "Median P/E (TTM)",
+          "unit": "x",
+          "type": "median",
+          "metric": "pe_ttm",
+          "positiveOnly": true
+        },
+        {
+          "id": "pb_median",
+          "label": "Median P/B",
+          "unit": "x",
+          "type": "median",
+          "metric": "pb",
+          "positiveOnly": true
+        },
+        {
+          "id": "market_cap",
+          "label": "Combined market cap",
+          "unit": "pkr_mn",
+          "type": "sum",
+          "metric": "market_cap"
+        }
+      ],
+      "kpis": [
+        "revenue_ttm",
+        "profit_ttm",
+        "revenue_growth_ttm",
+        "pe_median",
+        "roe_ttm"
+      ],
+      "trend": {
+        "revenue": "revenue_q",
+        "profit": "profit_q",
+        "margins": [
+          "gross_margin_ttm",
+          "operating_margin_ttm",
+          "net_margin_ttm"
+        ]
+      },
+      "leagueTables": [
+        "ttm_revenue_growth",
+        "net_margin",
+        "roe_ttm",
+        "net_cash_per_share"
+      ],
+      "valuationMap": {
+        "x": "roe_ttm",
+        "y": "pe_ttm",
+        "size": "market_cap"
+      },
+      "headline": {
+        "profit": "profit_ttm",
+        "valuation": "pe_median"
+      },
+      "compare": {
+        "annual": [
+          "pe",
+          "ps",
+          "pb",
+          "rank:pe",
+          "rank:pb",
+          "roe",
+          "roa",
+          "gross_margin",
+          "operating_margin",
+          "net_margin",
+          "revenue_growth",
+          "net_profit_growth",
+          "debt_to_equity",
+          "net_cash_per_share"
+        ],
+        "quarterly": [
+          "pe_ttm",
+          "ps_ttm",
+          "pb",
+          "rank:pe_ttm",
+          "rank:pb",
+          "roe_ttm",
+          "roa_ttm",
+          "gross_margin",
+          "operating_margin",
+          "net_margin",
+          "revenue_growth_qoq",
+          "revenue_growth_yoy",
+          "ttm_revenue_growth",
+          "net_profit_growth_qoq",
+          "net_profit_growth_yoy",
+          "ttm_net_profit_growth",
+          "debt_to_equity",
+          "net_cash_per_share"
+        ]
+      },
+      "companyCharts": {
+        "flows": [
+          "net_sales",
+          "net_profit"
+        ],
+        "margins": [
+          "gross_margin",
+          "operating_margin",
+          "net_margin"
+        ],
+        "returns": [
+          "roe_ttm",
+          "roa_ttm"
+        ],
+        "valuation": [
+          "pe_ttm",
+          "pb"
+        ],
+        "cash": [
+          "cash_and_bank",
+          "short_term_investments"
+        ],
+        "debt": [
+          "short_term_debt",
+          "current_portion_of_lt_debt",
+          "long_term_debt"
+        ],
+        "netCash": "net_cash",
+        "stats": [
+          "market_cap",
+          "pe_ttm",
+          "pb",
+          "roe_ttm",
+          "net_margin",
+          "net_cash_per_share"
+        ]
+      },
+      "headToHead": {
+        "flows": [
+          "net_sales",
+          "net_profit"
+        ],
+        "lines": [
+          "gross_margin",
+          "net_margin",
+          "roe",
+          "pe"
+        ],
+        "dots": [
+          "pe_ttm",
+          "pb",
+          "roe_ttm",
+          "net_margin",
+          "ttm_revenue_growth",
+          "debt_to_equity"
+        ]
+      },
+      "metricOverrides": {}
+    },
+    {
+      "slug": "banks",
+      "name": "Commercial Banks",
+      "shortName": "Banks",
+      "status": "coming_soon",
+      "description": "Deposits, advances, spreads and returns for PSX-listed banks."
+    },
+    {
+      "slug": "cement",
+      "name": "Cement",
+      "shortName": "Cement",
+      "status": "coming_soon",
+      "description": "Dispatches, margins and leverage for PSX-listed cement makers."
+    },
+    {
+      "slug": "fertiliser",
+      "name": "Fertiliser",
+      "shortName": "Fertiliser",
+      "status": "coming_soon",
+      "description": "Urea and DAP producers on the PSX."
+    },
+    {
+      "slug": "stress",
+      "name": "Worst-case test sector",
+      "shortName": "Stress test",
+      "status": "dev",
+      "workbook": "data-src/stress",
+      "description": "Development-only stress test: extreme but plausible values. Never shown in production.",
+      "template": "psx-standard",
+      "aggregates": [
+        {
+          "id": "revenue_ttm",
+          "label": "Combined revenue",
+          "unit": "pkr_mn",
+          "type": "sum",
+          "metric": "ttm_net_sales"
+        },
+        {
+          "id": "profit_ttm",
+          "label": "Combined net profit",
+          "unit": "pkr_mn",
+          "type": "sum",
+          "metric": "ttm_net_profit"
+        },
+        {
+          "id": "revenue_q",
+          "label": "Sector revenue (quarter)",
+          "unit": "pkr_mn",
+          "type": "sum",
+          "metric": "net_sales"
+        },
+        {
+          "id": "profit_q",
+          "label": "Sector net profit (quarter)",
+          "unit": "pkr_mn",
+          "type": "sum",
+          "metric": "net_profit"
+        },
+        {
+          "id": "revenue_growth_ttm",
+          "label": "Revenue growth (TTM)",
+          "unit": "pct",
+          "type": "ratio_of_sums",
+          "num": "ttm_net_sales",
+          "den": "prior_ttm_net_sales",
+          "minusOne": true
+        },
+        {
+          "id": "profit_growth_ttm",
+          "label": "Profit growth (TTM)",
+          "unit": "pct",
+          "type": "ratio_of_sums",
+          "num": "ttm_net_profit",
+          "den": "prior_ttm_net_profit",
+          "minusOne": true
+        },
+        {
+          "id": "gross_margin_ttm",
+          "label": "Gross margin (TTM)",
+          "unit": "pct",
+          "type": "ratio_of_sums",
+          "num": "gross_profit",
+          "den": "net_sales",
+          "ttm": true
+        },
+        {
+          "id": "operating_margin_ttm",
+          "label": "Operating margin (TTM)",
+          "unit": "pct",
+          "type": "ratio_of_sums",
+          "num": "operating_profit",
+          "den": "net_sales",
+          "ttm": true
+        },
+        {
+          "id": "net_margin_ttm",
+          "label": "Net margin (TTM)",
+          "unit": "pct",
+          "type": "ratio_of_sums",
+          "num": "net_profit",
+          "den": "net_sales",
+          "ttm": true
+        },
+        {
+          "id": "roe_ttm",
+          "label": "Sector ROE (TTM)",
+          "unit": "pct",
+          "type": "ratio_of_sums",
+          "num": "ttm_net_profit",
+          "den": "total_equity",
+          "denAverageLag": 4
+        },
+        {
+          "id": "pe_median",
+          "label": "Median P/E (TTM)",
+          "unit": "x",
+          "type": "median",
+          "metric": "pe_ttm",
+          "positiveOnly": true
+        },
+        {
+          "id": "pb_median",
+          "label": "Median P/B",
+          "unit": "x",
+          "type": "median",
+          "metric": "pb",
+          "positiveOnly": true
+        },
+        {
+          "id": "market_cap",
+          "label": "Combined market cap",
+          "unit": "pkr_mn",
+          "type": "sum",
+          "metric": "market_cap"
+        }
+      ],
+      "kpis": [
+        "revenue_ttm",
+        "profit_ttm",
+        "revenue_growth_ttm",
+        "pe_median",
+        "roe_ttm"
+      ],
+      "trend": {
+        "revenue": "revenue_q",
+        "profit": "profit_q",
+        "margins": [
+          "gross_margin_ttm",
+          "operating_margin_ttm",
+          "net_margin_ttm"
+        ]
+      },
+      "leagueTables": [
+        "ttm_revenue_growth",
+        "net_margin",
+        "roe_ttm",
+        "net_cash_per_share"
+      ],
+      "valuationMap": {
+        "x": "roe_ttm",
+        "y": "pe_ttm",
+        "size": "market_cap"
+      },
+      "headline": {
+        "profit": "profit_ttm",
+        "valuation": "pe_median"
+      },
+      "compare": {
+        "annual": [
+          "pe",
+          "ps",
+          "pb",
+          "rank:pe",
+          "rank:pb",
+          "roe",
+          "roa",
+          "gross_margin",
+          "operating_margin",
+          "net_margin",
+          "revenue_growth",
+          "net_profit_growth",
+          "debt_to_equity",
+          "net_cash_per_share"
+        ],
+        "quarterly": [
+          "pe_ttm",
+          "ps_ttm",
+          "pb",
+          "rank:pe_ttm",
+          "rank:pb",
+          "roe_ttm",
+          "roa_ttm",
+          "gross_margin",
+          "operating_margin",
+          "net_margin",
+          "revenue_growth_qoq",
+          "revenue_growth_yoy",
+          "ttm_revenue_growth",
+          "net_profit_growth_qoq",
+          "net_profit_growth_yoy",
+          "ttm_net_profit_growth",
+          "debt_to_equity",
+          "net_cash_per_share"
+        ]
+      },
+      "companyCharts": {
+        "flows": [
+          "net_sales",
+          "net_profit"
+        ],
+        "margins": [
+          "gross_margin",
+          "operating_margin",
+          "net_margin"
+        ],
+        "returns": [
+          "roe_ttm",
+          "roa_ttm"
+        ],
+        "valuation": [
+          "pe_ttm",
+          "pb"
+        ],
+        "cash": [
+          "cash_and_bank",
+          "short_term_investments"
+        ],
+        "debt": [
+          "short_term_debt",
+          "current_portion_of_lt_debt",
+          "long_term_debt"
+        ],
+        "netCash": "net_cash",
+        "stats": [
+          "market_cap",
+          "pe_ttm",
+          "pb",
+          "roe_ttm",
+          "net_margin",
+          "net_cash_per_share"
+        ]
+      },
+      "headToHead": {
+        "flows": [
+          "net_sales",
+          "net_profit"
+        ],
+        "lines": [
+          "gross_margin",
+          "net_margin",
+          "roe",
+          "pe"
+        ],
+        "dots": [
+          "pe_ttm",
+          "pb",
+          "roe_ttm",
+          "net_margin",
+          "ttm_revenue_growth",
+          "debt_to_equity"
+        ]
+      },
+      "metricOverrides": {}
+    }
+  ]
+}

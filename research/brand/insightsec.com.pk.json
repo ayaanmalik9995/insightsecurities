@@ -1,0 +1,90 @@
+{
+  "source": "https://insightsec.com.pk/",
+  "tokens": {
+    "spacing": {
+      "scale": [4, 8, 12, 16, 24, 32, 48, 64, 80],
+      "base_unit": 4
+    },
+    "typography": {
+      "families": ["Inter"],
+      "scale": [
+        { "role": "hero", "size": "50px", "weight": "700", "family": "Inter" },
+        { "role": "h2", "size": "42px", "weight": "700", "family": "Inter" },
+        { "role": "h3", "size": "18px", "weight": "600", "family": "Inter" },
+        { "role": "body-lead", "size": "18px", "weight": "400", "family": "Inter" },
+        { "role": "body", "size": "14px", "weight": "400", "family": "Inter" },
+        { "role": "nav", "size": "14px", "weight": "400", "family": "Inter" },
+        { "role": "button", "size": "14px", "weight": "600", "family": "Inter" },
+        { "role": "ticker-symbol", "size": "13px", "weight": "700", "family": "Inter" },
+        { "role": "ticker-meta", "size": "8.5px", "weight": "600", "family": "Inter" }
+      ]
+    },
+    "colors": [
+      { "role": "background", "value": "#FFFFFF" },
+      { "role": "text-primary", "value": "#1A1A1A" },
+      { "role": "text-muted", "value": "#737373" },
+      { "role": "border", "value": "#E6E6E6" },
+      { "role": "brand-primary", "value": "#008F3C" },
+      { "role": "brand-primary-dark", "value": "#003D1A" },
+      { "role": "footer-band", "value": "#004015" },
+      { "role": "brand-soft", "value": "#EFF7F2" },
+      { "role": "dark-band", "value": "#141414" },
+      { "role": "ticker-bar", "value": "#111315" },
+      { "role": "ticker-chip", "value": "#1A1D20" },
+      { "role": "ticker-meta-text", "value": "#AEB8B3" },
+      { "role": "ticker-up", "value": "#27D996" },
+      { "role": "ticker-down", "value": "#FF5867" },
+      { "role": "live-dot", "value": "#00A34A" }
+    ],
+    "radius": ["4px", "7px", "12px", "16px", "24px", "9999px"],
+    "shadows": [
+      "0 1px 2px rgba(0,0,0,0.05)",
+      "0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1)",
+      "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1)",
+      "0 4px 20px rgba(0,0,0,0.08)",
+      "drop-shadow(0 -3px 10px rgba(0,0,0,0.18)) on ticker bar"
+    ],
+    "image_ratios": [
+      { "usage": "hero slider", "ratio": "2.4:1" },
+      { "usage": "service card", "ratio": "1.33:1" },
+      { "usage": "logo", "ratio": "3.07:1" }
+    ],
+    "grid": { "max_width": "1280px", "columns": 3, "gutter": "24px-40px" },
+    "chrome": {
+      "header": "fixed, 81px, rgba(255,255,255,0.95) + blur(4px), 1px #E6E6E6 bottom border, logo left 148px wide, nav 14px #737373, green pill CTA 44px",
+      "ticker": "fixed bottom, 74px total: 16px meta tab row (LAST UPDATE / SOURCE: PSX, 8.5px uppercase) + 58px #111315 marquee of 44px chips (#1A1D20, 7px radius, min-width 190-205px) with symbol, price, and tinted change pill; chip bottom edge tinted green/red by direction",
+      "footer": "#004015 full-bleed, 4 columns (brand blurb + socials / Resources / Helpful Links / Contacts), white text, regulator badges row, centred copyright",
+      "motion": "150-200ms cubic-bezier(0.4,0,0.2,1); prefers-reduced-motion and :focus-visible present"
+    }
+  },
+  "taste": [
+    {
+      "name": "One green, no second brand hue",
+      "trigger": "When the brand needed emphasis in headlines, CTAs, icons and section bands",
+      "decision": "Chose a single green family (#008F3C primary, #003D1A/#004015 dark, #EFF7F2 soft) over pairing green with a secondary brand colour such as gold or navy",
+      "reason": "Because a brokerage is judged on steadiness: one recurring colour makes every green element read as 'Insight' and keeps attention on the numbers and the call to action",
+      "evidence": ["--primary 145 100% 28% = #008F3C on 'Get in Touch' (44px) and headline words", "--primary-dark 145 100% 12%", "footer #004015", "neutrals are 0% saturation (#1A1A1A, #737373, #E6E6E6) so no other hue competes"]
+    },
+    {
+      "name": "Live market data gets its own dark terminal register",
+      "trigger": "When putting live PSX prices on a marketing page that is otherwise white",
+      "decision": "Chose a fixed, near-black ticker (#111315 bar, #1A1D20 chips) with neon up/down colours (#27D996 / #FF5867) over styling prices in the page's own white-and-green palette",
+      "reason": "Because traders recognise the dark-strip-with-coloured-deltas look as 'market data', so they know these numbers are live and from the exchange, not marketing copy",
+      "evidence": ["ticker fixed bottom, 74px, z-index 200", "8.5px uppercase 'LAST UPDATE' and 'SOURCE: PSX' tabs", "change shown as tinted pill rgba(39,217,150,0.1) / rgba(255,88,103,0.1)", "body padding-bottom 74px reserves space for it"]
+    },
+    {
+      "name": "Full-bleed colour bands instead of dividers",
+      "trigger": "When separating ten-plus marketing sections on one long (5,842px) page",
+      "decision": "Chose alternating full-width bands (white, deep green, white, #141414, white, #004015 footer) with 80px section padding over hairline dividers or a uniform white page",
+      "reason": "Because on a long scroll a colour change is the strongest 'new chapter' signal, and each dark band lets one product (trading portal, awards) be the focus",
+      "evidence": ["--section-padding 5rem (80px)", "dark band #141414 for Awards", "green band for 'Trade Smarter' portal", "80px and 64px rank among the most frequent spacing values"]
+    },
+    {
+      "name": "Off-the-shelf component system, not bespoke type",
+      "trigger": "When choosing type, radii and shadows for a React + Tailwind build",
+      "decision": "Chose shadcn/Tailwind defaults (Inter only, --radius 0.75rem, Tailwind sm/md/lg shadows, 150-200ms ease) over a custom type pairing and hand-tuned elevation",
+      "reason": "Because the vendor optimised for build speed and consistency across pages; the cost is that numbers, tables and headings have no distinct voice, and that is the gap a data product can fill",
+      "evidence": ["uniqueFamilies: Inter x936 only", "no tabular-nums found on prices", "shadows are stock Tailwind values", "radii 7px / 12px / 16px / 9999px with no clear parent-child logic"]
+    }
+  ]
+}
