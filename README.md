@@ -79,6 +79,9 @@ Status values: `live` (published), `coming_soon` (listed, disabled), `hidden` (n
 
 ## 4. Deploy
 
+### Demo deployment (Vercel)
+The team preview is live at **https://genesis-x-insight.vercel.app** (Vercel project `genesis-x-insight`). It is connected to GitHub `ayaanmalik9995/insightsecurities`, so every push to `main` rebuilds and redeploys it automatically, using `vercel.json`. Pages send a `noindex` header, so search engines skip the preview.
+
 ### Option A (recommended): subdomain `insights.insightsec.com.pk`
 1. `npm run build`
 2. Upload the contents of `dist/` to the subdomain's document root on the LiteSpeed host.
